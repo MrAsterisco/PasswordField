@@ -80,7 +80,7 @@ On iOS and watchOS, the PasswordField will appear as a normal `SecureField` with
 
 On macOS, a checkbox will be displayed below the field with the same purpose of the button.
 
-tvOS works differently with text input and, most of the times, users will most probably type with another device: for these reasons, PasswordField is not marked as unavailable on tvOS.
+tvOS works differently with text input and, most of the times, users will most probably type with another device: for these reasons, **PasswordField is marked as unavailable on tvOS**.
 
 ## Compatibility
 PasswordField requires **iOS 15.0 or later**, **macOS 12.0 or later**, and **watchOS 8.0** or later. It is **not** available on tvOS, although it can be referenced on multi-platform projects targeting **tvOS 13.0 or later**.
