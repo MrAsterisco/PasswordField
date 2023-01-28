@@ -8,20 +8,11 @@
 import SwiftUI
 
 struct VisibilityToggle: View {
-  @State private var isOn = false
-  
-  let action: () -> ()
-  let isInputVisible: Bool
+  @Binding var isInputVisible: Bool
   
   var body: some View {
-    Toggle(isOn: $isOn) {
+    Toggle(isOn: $isInputVisible) {
       Text("Show Password")
-    }
-    .onChange(of: isOn) { newValue in
-      action()
-    }
-    .onAppear {
-      isOn = isInputVisible
     }
   }
 }

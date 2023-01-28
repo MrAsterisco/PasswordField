@@ -16,45 +16,44 @@ struct ContentView: View {
   
   var body: some View {
     Form {
-      Section("Simple") {
-        TextField("Username", text: $username)
+      Section {
         PasswordField(text: $password)
-      }
-
-      Section("New Password") {
-        TextField("Username", text: $username)
-        PasswordField(text: $password)
-        #if !os(macOS)
-          .textContentType(.newPassword)
-        #endif
+      } header: {
+        Text("Simple").bold()
       }
       
-      Section("Custom Design") {
-        TextField("Username", text: $username)
-          .customTextFieldModifier()
-        PasswordField(text: $password)
-          .customTextFieldModifier()
-      }
-      
-      Section("External Binding") {
+      Section {
         PasswordField(text: $password)
           .inputVisibile($isInputVisible)
           .visibilityControlPosition(.hidden)
         Toggle(isOn: $isInputVisible) {
           Text("Show Password")
         }
+      } header: {
+        Divider()
+          .padding(.top, 20)
+        Text("External Binding").bold()
       }
       
-      Section("Custom Control") {
-        PasswordField(text: $password) { isInputVisible, action in
-          Button(action: action) {
-            Image(systemName: isInputVisible ? "eye.slash.circle.fill" : "eye.circle.fill")
+      Section {
+        PasswordField(text: $password) { isInputVisible in
+          Picker("", selection: isInputVisible) {
+            Text("Visible")
+              .tag(true)
+            
+            Text("Hidden")
+              .tag(false)
           }
-          .tint(.red)
-          .buttonStyle(.borderless)
-          .padding(4)
+          .padding(.top, 4)
+          #if !os(watchOS)
+          .pickerStyle(.segmented)
+          #endif
         }
-        .visibilityControlPosition(.inlineOutside)
+        .visibilityControlPosition(.below)
+      } header: {
+        Divider()
+          .padding(.top, 20)
+        Text("Custom Visibility Control").bold()
       }
     }
     #if os(macOS)

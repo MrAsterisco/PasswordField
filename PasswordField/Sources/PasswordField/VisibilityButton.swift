@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct VisibilityButton: View {
-  let action: () -> ()
-  let isInputVisible: Bool
+  @Binding var isInputVisible: Bool
   
   var body: some View {
-    Button(action: action) {
+    Button(action: {
+      isInputVisible.toggle()
+    }) {
       Image(systemName: isInputVisible ? "eye.slash.fill" : "eye.fill")
     }
+    #if !os(tvOS)
     .buttonStyle(.borderless)
+    #endif
     .padding(4)
   }
 }
