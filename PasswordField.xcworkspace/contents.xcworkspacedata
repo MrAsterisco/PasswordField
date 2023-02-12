@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:PasswordField/../PasswordFieldExample/PasswordFieldExample.xcodeproj">
+      location = "group:">
    </FileRef>
    <FileRef
-      location = "group:PasswordField">
+      location = "group:PasswordField/../PasswordFieldExample/PasswordFieldExample.xcodeproj">
    </FileRef>
 </Workspace>
